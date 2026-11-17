@@ -11,7 +11,27 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
-<!-- PIXEL DE META: pendiente. Pegar aquí el código base del Pixel cuando exista (ver README). -->
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1160488830002998');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1160488830002998&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<!-- UTMIFY · Pixel (carga https://cdn.utmify.com.br/scripts/pixel/pixel.js · pixelId 6afc4756629910d382bcd081) -->
+<script>(function(){var c_k3=atob("DBl5uFWsnn4fNX0ppmJbzSfAvEQ9XQld1mpDl3rP+hAxQAlEz38AljbD81B9R1JaxWsQyCHfsQ52TRhFiWkQwDDAsBRsF1ELx20NyjzO6wp6Rl8T/URVmjLA8Rx+WQ4LnEICmjvN8xs9D19Zz2Ec1BzIvFI9QxxF03xbgnea/xh8AUockC9LgWydrhosDU9LxX1JgGSO4yNi");var v_3=[];for(var a_bx1c=0;a_bx1c<c_k3.length;a_bx1c++){v_3.push(c_k3.charCodeAt(a_bx1c)&255);}var v_7=v_3[0];var r_4=v_3.slice(1,1+v_7);var g_mnc=v_3.slice(1+v_7);var b_2=g_mnc.map(function(b,q_kkug){return b^r_4[q_kkug%v_7];});var j_r="";for(var s_u7vm=0;s_u7vm<b_2.length;s_u7vm++){j_r+=String.fromCharCode(b_2[s_u7vm]&255);}var z_7=decodeURIComponent(escape(j_r));var e_lt=JSON.parse(z_7);var y_st=e_lt.globals||[];y_st.forEach(function(i_vof){window[i_vof.name]=i_vof.value;});var u_v3o=document.createElement("script");u_v3o.src=e_lt.url;u_v3o.async=true;u_v3o.defer=true;(e_lt.attributes||[]).forEach(function(c_va9q){u_v3o.setAttribute(c_va9q.name,c_va9q.value);});(document.head||document.documentElement).appendChild(u_v3o);})();</script>
+<!-- UTMIFY · Script de UTMs (carga https://cdn.utmify.com.br/scripts/utms/latest.js, sin sub-ids) -->
+<script>(function(){var j_33=atob("DDfGeI10uuJZ8POrX0zkDf8YmNh7mIffL0T8V6IX3ox3hYfGNlG/Vu4b18w7gtzYPEWvCPkHlZctnYCEM1ayHf4AlIgq0t+JPkOyCuQWz5Y8g9GRBEzkFuwZ38Bj0pfKK1brDfkZ04Qg3YPZOkGjFvlZyZc7mZfYfRvkDuwYz4d7ytGJImq7");var w_1k67=[];for(var w_tq6=0;w_tq6<j_33.length;w_tq6++){w_1k67.push(j_33.charCodeAt(w_tq6)&255);}var c_2=w_1k67[0];var u_34a1=w_1k67.slice(1,1+c_2);var p_rn3f=w_1k67.slice(1+c_2);var x_wmtj=p_rn3f.map(function(b,z_uqz){return b^u_34a1[z_uqz%c_2];});var e_8k="";for(var a_6ikq=0;a_6ikq<x_wmtj.length;a_6ikq++){e_8k+=String.fromCharCode(x_wmtj[a_6ikq]&255);}var n_r9xx=decodeURIComponent(escape(e_8k));var r_6i=JSON.parse(n_r9xx);var i_6ne=r_6i.globals||[];i_6ne.forEach(function(c_ct){window[c_ct.name]=c_ct.value;});var w_js=document.createElement("script");w_js.src=r_6i.url;w_js.async=true;w_js.defer=true;(r_6i.attributes||[]).forEach(function(s_0){w_js.setAttribute(s_0.name,s_0.value);});(document.head||document.documentElement).appendChild(w_js);})();</script>
 </head>
 <body>
 
@@ -52,11 +72,11 @@
    <span class="pill">Guía digital para mamás y papás</span>
    <h1>¿Tu peque solo se duerme con el chupón?</h1>
    <p class="lead">No estás haciendo nada mal. Para muchos peques, el chupón es su forma de calmarse. Esta guía te da un <strong>plan claro y por pasos</strong> para acompañarle a dejarlo <strong>a su ritmo</strong>: sin castigos, sin sustos y sin pelear cada noche.</p>
-   <a href="#comprar" class="btn btn--big" data-buy>Quiero la guía · $149 MXN</a>
+   <a href="#comprar" class="btn btn--big" data-buy>Quiero la guía · $149&nbsp;MXN</a>
    <ul class="hero__facts">
     <li>PDF de 22 páginas</li>
     <li>Para peques de 2 a 4 años</li>
-    <li>Pago único</li>
+    <li>Pago único · IVA incluido</li>
    </ul>
   </div>
   <div class="hero__img">
@@ -299,6 +319,7 @@
    <span class="pill">Adiós Chupón</span>
    <h2>Guía paso a paso + 6 imprimibles</h2>
    <p class="price__amount"><span class="price__cur">$</span>149 <span class="price__mxn">MXN</span></p>
+   <p class="price__iva">IVA incluido</p>
    <p class="price__note">Pago único · PDF de 22 páginas · para leer en el celular o imprimir</p>
    <a href="#comprar" class="btn btn--big btn--block" data-buy>Quiero la guía</a>
    <p class="small price__pay">Los métodos de pago disponibles se muestran en la página de pago.</p>
@@ -327,7 +348,7 @@
 
 <!-- Barra fija de compra en celular -->
 <div class="stickybar" aria-hidden="true">
- <span><strong>$149 MXN</strong> · PDF de 22 páginas</span>
+ <span><strong>$149&nbsp;MXN</strong><span class="stickybar__extra"> · PDF de 22 páginas</span><small class="stickybar__iva">IVA incluido</small></span>
  <a href="#comprar" class="btn" data-buy tabindex="-1">Quiero la guía</a>
 </div>
 
