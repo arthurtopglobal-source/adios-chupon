@@ -31,6 +31,14 @@ No app Claude, a configuração "pagina-venta" do `.claude/launch.json` inicia o
 - Visor de páginas abre e fecha (botão, clique fora e tecla Esc).
 - Perguntas frequentes abrem e fecham.
 
+## Atualização 17/11/2026
+- **Checkout conectado:** `js/config.js` → `https://pay.hotmart.com/W108503870B`. Os botões levam os parâmetros da visita (UTMs etc.) até o checkout sem sobrescrever os que já existirem.
+- **Utmify (Script de UTMs) instalado** no `<head>` do `index.html` (carrega `cdn.utmify.com.br/scripts/utms/latest.js`, sem sub-ids). Script de Back Redirect **não** instalado.
+- **Celular:** testado de 320 px a 1280 px (incluindo paisagem): sem rolagem lateral, botões em uma linha, barra fixa sem cortes (até 400 px mostra só preço + botão).
+- **Pixel da Meta instalado** (ID 1160488830002998) no `<head>`: dispara `PageView` ao abrir a página e `InitiateCheckout` (149 MXN) ao clicar em comprar. O `Purchase` precisa ser configurado na Hotmart (integração do Pixel no produto).
+- **Pixel da Utmify instalado** no `<head>` (carrega `cdn.utmify.com.br/scripts/pixel/pixel.js`, pixelId Utmify `6afc4756629910d382bcd081`). Em `localhost` ele tenta enviar para `localhost:3001` (modo de desenvolvimento) e falha: só dá para testar com a página publicada. **Depois de publicar:** abrir o Gerenciador de Eventos da Meta → Testar eventos, visitar a página e ver se o PageView chega uma vez (ou "desduplicado"). Se chegar duplicado (navegador + servidor), remover o bloco "Meta Pixel Code" do `index.html` e reativar o Initiate Checkout na Utmify com o texto "Quiero la guía".
+- **Preço:** a Hotmart mostra **MX$128.45 + IVA (16%) = $149 MXN**. A página informa "$149 MXN · IVA incluido" (fatos do topo, caixa de preço e barra fixa).
+
 ## O que falta para conectar o checkout
 1. **Criar o produto na plataforma de pagamento** (ex.: Hotmart, ou outra que aceite compradores do México) a **$149 MXN**, com entrega automática do PDF `produto/Adios-Chupon-Guia.pdf`.
 2. **Colar o link de pagamento** em `js/config.js` → `checkoutUrl` (precisa começar com `https://`). Todos os botões passam a usá-lo automaticamente.
