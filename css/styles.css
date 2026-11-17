@@ -138,6 +138,22 @@ strong{ color:var(--ink); }
   box-shadow:0 -6px 20px rgba(74,65,85,.08); transform:translateY(110%); transition:transform .25s ease; font-size:.95rem; }
 .stickybar.is-visible{ transform:none; }
 .stickybar .btn{ padding:.65em 1.2em; font-size:1rem; white-space:nowrap; }
+.stickybar > span{ line-height:1.3; min-width:0; }
+.stickybar__iva{ display:block; font-size:.78rem; color:var(--soft); }
+.price__iva{ margin:0 0 6px; font-family:'Fredoka',sans-serif; font-weight:500; font-size:1rem; color:var(--soft); }
+
+/* Celulares pequeños (320–374 px): todo cabe sin cortes */
+@media (max-width:374px){
+  .wrap{ padding:0 16px; }
+  .gallery{ margin-left:-16px; margin-right:-16px; }
+  .btn--big{ font-size:1.05rem; padding:.95em 1.1em; }
+  .stickybar{ padding-left:12px; padding-right:12px; }
+  .price__amount{ font-size:3.1rem; }
+}
+/* Barra fija: en celulares de hasta 400 px solo precio + botón, en una línea */
+@media (max-width:400px){
+  .stickybar__extra{ display:none; }
+}
 
 /* Visor */
 .lightbox{ position:fixed; inset:0; z-index:50; background:rgba(40,32,48,.86); display:flex; align-items:center; justify-content:center; padding:20px; }
