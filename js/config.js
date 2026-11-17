@@ -5,7 +5,7 @@
 window.ADIOS_CHUPON_CONFIG = {
   // Pega aquí el enlace de pago del producto (por ejemplo, el enlace de checkout de tu plataforma).
   // Mientras esté vacío, los botones de compra NO llevan a ningún pago: muestran un aviso de "modo revisión".
-  checkoutUrl: "",
+  checkoutUrl: "https://pay.hotmart.com/W108503870B",
 
   // Garantía: muéstrala solo si está configurada igual en la plataforma de pago.
   // Si tu plataforma no ofrece reembolso, cambia showGuarantee a false.
