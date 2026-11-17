@@ -16,12 +16,27 @@
   var buyButtons = document.querySelectorAll("[data-buy]");
   var hasCheckout = typeof cfg.checkoutUrl === "string" && /^https:\/\//i.test(cfg.checkoutUrl.trim());
 
+  // Lleva los parámetros de la visita (utm_source, utm_campaign, src, etc.) al checkout,
+  // sin reemplazar los que ya estén en el enlace (por ejemplo, los que agregue el script de UTMs).
+  function withVisitParams(href) {
+    try {
+      var url = new URL(href);
+      new URLSearchParams(window.location.search).forEach(function (value, key) {
+        if (!url.searchParams.has(key)) url.searchParams.set(key, value);
+      });
+      return url.toString();
+    } catch (err) {
+      return href;
+    }
+  }
+
   buyButtons.forEach(function (btn) {
     if (hasCheckout) {
-      btn.setAttribute("href", cfg.checkoutUrl.trim());
+      btn.setAttribute("href", withVisitParams(cfg.checkoutUrl.trim()));
       btn.setAttribute("rel", "noopener");
     }
     btn.addEventListener("click", function (e) {
+      if (hasCheckout) btn.setAttribute("href", withVisitParams(btn.href));
       if (!hasCheckout) {
         // Modo revisión: no hay checkout configurado todavía.
         e.preventDefault();
