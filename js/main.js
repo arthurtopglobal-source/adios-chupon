@@ -76,20 +76,29 @@
   });
 
   /* ---- Barra fija en celular ---- */
+  // Se oculta mientras se ve la primera dobra, la oferta (#comprar) o el CTA final ([data-hide-sticky]).
   var bar = document.querySelector(".stickybar");
   var hero = document.querySelector(".hero");
-  var priceBox = document.getElementById("comprar");
-  if (bar && "IntersectionObserver" in window && hero && priceBox) {
-    var heroVisible = true, priceVisible = false;
+  var hideZones = document.querySelectorAll("#comprar, [data-hide-sticky]");
+  if (bar && "IntersectionObserver" in window && hero && hideZones.length) {
+    var heroVisible = true, visibleZones = [];
     var update = function () {
-      var show = !heroVisible && !priceVisible;
+      var show = !heroVisible && visibleZones.length === 0;
       bar.classList.toggle("is-visible", show);
       bar.setAttribute("aria-hidden", show ? "false" : "true");
       var link = bar.querySelector("a");
       if (link) link.tabIndex = show ? 0 : -1;
     };
     new IntersectionObserver(function (ent) { heroVisible = ent[0].isIntersecting; update(); }, { threshold: 0.05 }).observe(hero);
-    new IntersectionObserver(function (ent) { priceVisible = ent[0].isIntersecting; update(); }, { threshold: 0.05 }).observe(priceBox);
+    var zoneObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        var i = visibleZones.indexOf(en.target);
+        if (en.isIntersecting && i === -1) visibleZones.push(en.target);
+        if (!en.isIntersecting && i !== -1) visibleZones.splice(i, 1);
+      });
+      update();
+    }, { threshold: 0.05 });
+    hideZones.forEach(function (z) { zoneObs.observe(z); });
   }
 
   /* ---- Visor de páginas ---- */
