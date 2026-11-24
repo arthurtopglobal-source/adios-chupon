@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Panel · Adiós Chupón</title>
+<style>
+  :root{ --ink:#2A2733; --soft:#5F5769; --plum:#5E4370; --teal:#2C8C86; --green:#12B24C; --amber:#D98A2B;
+    --line:#E7E0EE; --card:#fff; --bg1:#EAF1F6; --bg2:#F4EEF8; }
+  *{ box-sizing:border-box; }
+  body{ margin:0; font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; color:var(--ink);
+    background:linear-gradient(180deg,var(--bg1),var(--bg2)); min-height:100vh; line-height:1.5; }
+  .wrap{ max-width:900px; margin:0 auto; padding:22px 18px 60px; }
+  h1{ font-size:1.5rem; margin:0 0 2px; color:var(--plum); }
+  .muted{ color:var(--soft); font-size:.92rem; }
+  .bar{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin:16px 0 8px; }
+  input[type=password],input[type=text]{ border:2px solid var(--line); border-radius:11px; padding:10px 13px; font-size:1rem; font-family:inherit; min-width:170px; }
+  button{ border:0; border-radius:11px; padding:11px 18px; font-size:1rem; font-weight:700; font-family:inherit; cursor:pointer; background:var(--plum); color:#fff; }
+  button:hover{ filter:brightness(1.07); }
+  .tag{ display:inline-block; font-size:.78rem; font-weight:700; padding:.18em .7em; border-radius:99px; }
+  .tag--live{ background:#E2F3E7; color:#2b7a44; }
+  .tag--demo{ background:#FBEEDD; color:#9a6315; }
+  .tag--err{ background:#FBE1E4; color:#b03b4e; }
+  .kpis{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin:18px 0; }
+  .kpi{ background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px 18px; }
+  .kpi b{ display:block; font-size:2rem; line-height:1.1; color:var(--plum); font-weight:800; }
+  .kpi span{ color:var(--soft); font-size:.86rem; }
+  .card{ background:var(--card); border:1px solid var(--line); border-radius:18px; padding:18px 20px; margin:16px 0; }
+  .card h2{ font-size:1.08rem; margin:0 0 14px; }
+  .fn{ display:flex; flex-direction:column; gap:9px; }
+  .fn__row{ display:grid; grid-template-columns:150px 1fr; gap:10px; align-items:center; }
+  .fn__lab{ font-size:.9rem; font-weight:700; }
+  .fn__lab small{ display:block; color:var(--soft); font-weight:600; font-size:.78rem; }
+  .fn__barwrap{ background:#F0ECF5; border-radius:9px; height:30px; position:relative; overflow:hidden; }
+  .fn__bar{ height:100%; background:linear-gradient(90deg,var(--teal),#3aa7a0); border-radius:9px; min-width:2px; transition:width .5s; }
+  .fn__val{ position:absolute; top:0; left:10px; height:30px; display:flex; align-items:center; gap:8px; font-size:.84rem; font-weight:700; color:#15423f; }
+  .fn__drop{ color:#b03b4e; font-weight:700; }
+  table{ width:100%; border-collapse:collapse; font-size:.92rem; }
+  th,td{ text-align:left; padding:8px 6px; border-bottom:1px solid var(--line); }
+  th{ color:var(--soft); font-weight:700; font-size:.8rem; text-transform:uppercase; letter-spacing:.03em; }
+  td.num{ text-align:right; font-variant-numeric:tabular-nums; font-weight:700; }
+  .foot{ color:var(--soft); font-size:.8rem; margin-top:22px; }
+  .empty{ color:var(--soft); padding:10px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Panel del quiz · Adiós Chupón</h1>
+  <p class="muted">Mide por dónde pasan los visitantes, cuánto tardan en cada pantalla y si llegan al final. No guarda nombre, teléfono ni correo.</p>
+
+  <div class="bar">
+    <input type="password" id="key" placeholder="Palabra secreta" autocomplete="off">
+    <button id="go">Actualizar</button>
+    <span id="status"></span>
+  </div>
+
+  <div id="out"></div>
+  <p class="foot">Fuente de datos: <span id="src">—</span>. El quiz envía los datos a tu Hoja de Google (configúralo en <code>js/config.js</code> → <code>analyticsUrl</code>). Guía: <code>analytics/INSTRUCCIONES.md</code>.</p>
+</div>
+
+<script src="js/config.js"></script>
+<script>
+(function () {
+  var cfg = window.ADIOS_CHUPON_CONFIG || {};
+  var AN = (typeof cfg.analyticsUrl === "string" && /^https:\/\//i.test(cfg.analyticsUrl.trim())) ? cfg.analyticsUrl.trim() : "";
+  var out = document.getElementById("out");
+  var statusEl = document.getElementById("status");
+  var srcEl = document.getElementById("src");
+  var keyEl = document.getElementById("key");
+  if (cfg.analyticsKey) keyEl.value = cfg.analyticsKey;
+
+  var LABELS = {
+    intro: ["Inicio (portada)", "nombre"], edad: ["Edad", "pregunta"], insight_2: ["Insight: edad", "lectura"],
+    cuando: ["Cuándo usa el chupón", "pregunta"], intento: ["Al intentar quitarlo", "pregunta"],
+    insight_5: ["Insight: ánimo", "lectura"], probado: ["Qué ha probado", "pregunta"],
+    preocupa: ["Qué le preocupa", "pregunta"], meta: ["Qué quiere lograr", "pregunta"],
+    formato: ["Elección de formato", "pregunta"], insight_10: ["Insight: casi listo", "lectura"],
+    loader: ["Cargando resultado", ""], result: ["Resultado + oferta", "oferta"]
+  };
+  function lab(id) { return (LABELS[id] && LABELS[id][0]) || id; }
+  function sub(id) { return (LABELS[id] && LABELS[id][1]) || ""; }
+  function fmtMs(ms) { if (!ms || ms < 0) return "—"; var s = ms / 1000; return s < 60 ? s.toFixed(1) + " s" : (s / 60).toFixed(1) + " min"; }
+  function median(arr) { if (!arr.length) return 0; arr = arr.slice().sort(function (a, b) { return a - b; }); var m = Math.floor(arr.length / 2); return arr.length % 2 ? arr[m] : (arr[m - 1] + arr[m]) / 2; }
+  function pct(a, b) { return b ? Math.round(a / b * 100) : 0; }
+
+  function setStatus(txt, cls) { statusEl.innerHTML = txt ? '<span class="tag tag--' + cls + '">' + txt + "</span>" : ""; }
+
+  function loadJSONP(url, cb) {
+    var s = document.createElement("script");
+    var done = false;
+    window.__acData = function (data) { done = true; delete window.__acData; try { s.remove(); } catch (e) {} cb(data); };
+    s.onerror = function () { if (done) return; try { s.remove(); } catch (e) {} cb({ ok: false, error: "no se pudo conectar" }); };
+    s.src = url + (url.indexOf("?") < 0 ? "?" : "&") + "callback=__acData";
+    document.body.appendChild(s);
+    setTimeout(function () { if (!done) { try { s.remove(); } catch (e) {} cb({ ok: false, error: "tiempo de espera agotado" }); } }, 12000);
+  }
+
+  function getLocal() {
+    try { return JSON.parse(localStorage.getItem("ac_log") || "[]"); } catch (e) { return []; }
+  }
+
+  function aggregate(events) {
+    var views = events.filter(function (e) { return e.ev === "view"; });
+    var sids = {}; views.forEach(function (e) { sids[e.sid] = 1; });
+    var sessions = Object.keys(sids).length;
+
+    // orden de pantallas por idx mínimo
+    var order = {}, seen = {};
+    views.forEach(function (e) { if (!(e.screen in order) || e.idx < order[e.screen]) order[e.screen] = e.idx; });
+    var screens = Object.keys(order).sort(function (a, b) { return order[a] - order[b]; });
+
+    // funnel: sids distintos por pantalla
+    var reach = {}; screens.forEach(function (s) { reach[s] = {}; });
+    views.forEach(function (e) { if (reach[e.screen]) reach[e.screen][e.sid] = 1; });
+    var funnel = screens.map(function (s) { return { id: s, n: Object.keys(reach[s]).length }; });
+
+    // tiempo por pantalla: ms de la vista agrupado por 'from' (pantalla anterior)
+    var timeByScreen = {};
+    views.forEach(function (e) { if (e.from && e.ms > 0 && e.ms < 1000 * 60 * 30) { (timeByScreen[e.from] = timeByScreen[e.from] || []).push(e.ms); } });
+
+    // checkout
+    var coSids = {}; events.forEach(function (e) { if (e.ev === "checkout") coSids[e.sid] = 1; });
+    var checkout = Object.keys(coSids).length;
+
+    // formato elegido
+    var fmt = {}; events.forEach(function (e) { if (e.ev === "answer" && e.screen === "formato") { fmt[e.val] = fmt[e.val] || {}; fmt[e.val][e.sid] = 1; } });
+    var formato = Object.keys(fmt).map(function (k) { return { v: k, n: Object.keys(fmt[k]).length }; }).sort(function (a, b) { return b.n - a.n; });
+
+    return { sessions: sessions, funnel: funnel, timeByScreen: timeByScreen, checkout: checkout, formato: formato,
+      reachedEnd: (reach.result ? Object.keys(reach.result).length : 0) };
+  }
+
+  var FMT_LAB = { paso: "Guía paso a paso", plan: "Plan día y noche", imprimibles: "Con imprimibles" };
+
+  function render(a) {
+    if (!a.sessions) { out.innerHTML = '<div class="card"><p class="empty">Todavía no hay visitas registradas. Abre el quiz, respóndelo y vuelve aquí.</p></div>'; return; }
+    var html = "";
+    html += '<div class="kpis">' +
+      kpi(a.sessions, "Sesiones iniciadas") +
+      kpi(pct(a.reachedEnd, a.sessions) + "%", "Llegan al resultado") +
+      kpi(a.reachedEnd, "Llegan al final") +
+      kpi(pct(a.checkout, a.sessions) + "%", "Clic en comprar") + "</div>";
+
+    // funnel
+    var base = a.funnel.length ? a.funnel[0].n : a.sessions;
+    html += '<div class="card"><h2>Embudo — ¿hasta dónde llegan?</h2><div class="fn">';
+    a.funnel.forEach(function (f, i) {
+      var p = pct(f.n, base);
+      var drop = i > 0 ? (a.funnel[i - 1].n - f.n) : 0;
+      html += '<div class="fn__row"><div class="fn__lab">' + lab(f.id) + (sub(f.id) ? "<small>" + sub(f.id) + "</small>" : "") + "</div>" +
+        '<div class="fn__barwrap"><div class="fn__bar" style="width:' + Math.max(p, 2) + '%"></div>' +
+        '<div class="fn__val">' + f.n + " · " + p + "%" + (drop > 0 ? ' <span class="fn__drop">(−' + drop + ")</span>" : "") + "</div></div></div>";
+    });
+    html += "</div></div>";
+
+    // tiempo por pantalla
+    html += '<div class="card"><h2>Tiempo en cada pantalla</h2><table><thead><tr><th>Pantalla</th><th style="text-align:right">Mediana</th><th style="text-align:right">Promedio</th><th style="text-align:right">Muestras</th></tr></thead><tbody>';
+    var any = false;
+    a.funnel.forEach(function (f) {
+      var arr = a.timeByScreen[f.id];
+      if (!arr || !arr.length) return;
+      any = true;
+      var avg = arr.reduce(function (s, x) { return s + x; }, 0) / arr.length;
+      html += "<tr><td>" + lab(f.id) + '</td><td class="num">' + fmtMs(median(arr)) + '</td><td class="num">' + fmtMs(avg) + '</td><td class="num">' + arr.length + "</td></tr>";
+    });
+    html += "</tbody></table>";
+    if (!any) html += '<p class="empty">Aún no hay suficientes datos de tiempo.</p>';
+    html += "</div>";
+
+    // formato
+    if (a.formato.length) {
+      html += '<div class="card"><h2>Formato que eligen</h2><table><tbody>';
+      a.formato.forEach(function (f) { html += "<tr><td>" + (FMT_LAB[f.v] || f.v) + '</td><td class="num">' + f.n + " · " + pct(f.n, a.sessions) + "%</td></tr>"; });
+      html += "</tbody></table></div>";
+    }
+    out.innerHTML = html;
+  }
+  function kpi(v, l) { return '<div class="kpi"><b>' + v + "</b><span>" + l + "</span></div>"; }
+
+  function load() {
+    out.innerHTML = "";
+    if (AN) {
+      setStatus("cargando…", "live");
+      var url = AN + "?key=" + encodeURIComponent(keyEl.value || "");
+      loadJSONP(url, function (data) {
+        if (!data || !data.ok) { setStatus(data && data.error ? data.error : "error", "err"); srcEl.textContent = "en vivo (error)"; out.innerHTML = '<div class="card"><p class="empty">No se pudieron cargar los datos. Revisa la palabra secreta y la URL en js/config.js.</p></div>'; return; }
+        setStatus("en vivo", "live"); srcEl.textContent = "en vivo (Hoja de Google)";
+        render(aggregate(data.events || []));
+      });
+    } else {
+      setStatus("demostración", "demo"); srcEl.textContent = "demostración (solo este navegador)";
+      render(aggregate(getLocal()));
+    }
+  }
+
+  document.getElementById("go").addEventListener("click", load);
+  keyEl.addEventListener("keydown", function (e) { if (e.key === "Enter") load(); });
+  load();
+})();
+</script>
+</body>
+</html>
