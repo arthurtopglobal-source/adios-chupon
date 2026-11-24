@@ -19,7 +19,7 @@ window.ADIOS_CHUPON_CONFIG = {
 
   // Panel de administrador (medición del quiz). Pega aquí la URL de tu Web App de Google Apps Script.
   // Mientras esté vacío, el quiz NO envía datos a ningún lado (solo guarda un registro local para la demo).
-  analyticsUrl: "",
+  analyticsUrl: "https://script.google.com/macros/s/AKfycbx-vAv7XPt4dL9llkcaBk8EuBPHMEbToL_w6MOJj5aOcIiNEzPT4dn1EHgTkxoYg1qLIw/exec",
   // Clave simple para que solo tú veas el panel (la misma que pones en el script). Opcional.
   analyticsKey: ""
 };
