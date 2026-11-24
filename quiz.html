@@ -53,71 +53,128 @@ src="https://www.facebook.com/tr?id=1160488830002998&ev=PageView&noscript=1"
   <symbol id="i-wand" viewBox="0 0 64 64"><path d="M14 54l24-24" stroke="#B7A6DD" stroke-width="4" stroke-linecap="round"/><path d="M44 6l4 9 10 1-7.5 7 2 10-8.5-5-8.5 5 2-10L30 16l10-1z" fill="#F6D58E" stroke="#E9BF63" stroke-width="1.6" stroke-linejoin="round"/><circle cx="20" cy="22" r="2" fill="#E9A3AE"/><circle cx="54" cy="44" r="2.4" fill="#9FC4A6"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#DCEBDD"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#5E9A6A" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#F9E1E4"/><path d="M8.5 8.5l7 7M15.5 8.5l-7 7" stroke="#C9707E" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <!-- Ilustraciones de las tarjetas del quiz (escenas simples, mismo estilo pastel del PDF) -->
+  <symbol id="sc-sleep" viewBox="0 0 100 72"><rect width="100" height="72" rx="16" fill="#E7E0F5"/><path d="M72 13a13 13 0 1 0 11 21 10.5 10.5 0 0 1-11-21z" fill="#F6D58E"/><circle cx="55" cy="15" r="1.7" fill="#E5C879"/><path d="M20 40h12l-12 15h12" fill="none" stroke="#9A86C4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M37 31h8l-8 10h8" fill="none" stroke="#9A86C4" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="sc-nap" viewBox="0 0 100 72"><rect width="100" height="72" rx="16" fill="#FBE7CF"/><circle cx="40" cy="31" r="13" fill="#F6D58E"/><path d="M26 52h44a10 10 0 0 0 0-18 13 13 0 0 0-24-2 9 9 0 0 0-20 20z" fill="#fff"/><path d="M70 22h9l-9 9h9" fill="none" stroke="#E2A977" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="sc-day" viewBox="0 0 100 72"><rect width="100" height="72" rx="16" fill="#FCE7C8"/><g stroke="#F2B84B" stroke-width="3" stroke-linecap="round"><path d="M50 9v8M50 55v8M13 36h8M79 36h8M25 17l6 6M75 17l-6 6M25 55l6-6M75 55l-6-6"/></g><circle cx="50" cy="36" r="15" fill="#F6D58E"/></symbol>
+  <symbol id="sc-alltime" viewBox="0 0 100 72"><rect width="100" height="72" rx="16" fill="#F2ECF9"/><circle cx="50" cy="36" r="21" fill="#fff" stroke="#B7A6DD" stroke-width="3"/><path d="M50 23v14l9 5" stroke="#5E4370" stroke-width="3.2" stroke-linecap="round" fill="none"/></symbol>
+  <symbol id="sc-hard" viewBox="0 0 100 72"><rect width="100" height="72" rx="16" fill="#E7E0F5"/><path d="M70 13a13 13 0 1 0 11 21 10.5 10.5 0 0 1-11-21z" fill="#F6D58E"/><ellipse cx="42" cy="38" rx="17" ry="12" fill="#F1D3BC"/><path d="M34 35q4 3 8 0M44 35q0 0 0 0" stroke="#4A4155" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="37" cy="36" r="1.9" fill="#4A4155"/><circle cx="48" cy="36" r="1.9" fill="#4A4155"/><path d="M36 46q6-5 12 0" stroke="#C9707E" stroke-width="2.2" fill="none" stroke-linecap="round"/></symbol>
+  <symbol id="sc-wake" viewBox="0 0 100 72"><rect width="100" height="72" rx="16" fill="#E7E0F5"/><path d="M74 13a12 12 0 1 0 10 19 10 10 0 0 1-10-19z" fill="#F6D58E"/><ellipse cx="44" cy="38" rx="15" ry="9" fill="#fff" stroke="#9A86C4" stroke-width="2.2"/><circle cx="44" cy="38" r="4" fill="#5E4370"/><path d="M26 54h36" stroke="#C9B8E8" stroke-width="4" stroke-linecap="round"/></symbol>
+  <symbol id="sc-cry" viewBox="0 0 100 72"><rect width="100" height="72" rx="16" fill="#F9E1E4"/><circle cx="50" cy="35" r="17" fill="#F1D3BC"/><circle cx="43" cy="32" r="2.1" fill="#4A4155"/><circle cx="57" cy="32" r="2.1" fill="#4A4155"/><ellipse cx="50" cy="44" rx="4" ry="3.2" fill="#C9707E"/><path d="M41 33q-3 6 0 9a3 3 0 0 0 5.5-2.4z" fill="#7FB4E0"/></symbol>
+  <symbol id="sc-notyet" viewBox="0 0 100 72"><rect width="100" height="72" rx="16" fill="#DCEBDD"/><circle cx="50" cy="36" r="18" fill="#fff" stroke="#9FC4A6" stroke-width="2.6"/><text x="50" y="46" text-anchor="middle" font-family="Fredoka,sans-serif" font-size="26" font-weight="600" fill="#3E6B48">?</text></symbol>
+  <symbol id="sc-gradual" viewBox="0 0 100 72"><rect width="100" height="72" rx="16" fill="#DCEBDD"/><rect x="26" y="18" width="12" height="38" rx="3.5" fill="#6FA97C"/><rect x="44" y="28" width="12" height="28" rx="3.5" fill="#9FC4A6"/><rect x="62" y="40" width="12" height="16" rx="3.5" fill="#C6E0C9"/></symbol>
+  <symbol id="sc-hide" viewBox="0 0 100 72"><rect width="100" height="72" rx="16" fill="#FBE7CF"/><rect x="30" y="34" width="40" height="22" rx="3" fill="#E6B59A"/><rect x="26" y="25" width="48" height="11" rx="3" fill="#D9826A"/><rect x="45" y="30" width="10" height="4" rx="2" fill="#B96A52"/></symbol>
+  <symbol id="sc-talk" viewBox="0 0 100 72"><rect width="100" height="72" rx="16" fill="#E7E0F5"/><path d="M20 22h34a6 6 0 0 1 6 6v10a6 6 0 0 1-6 6H34l-9 7v-7a6 6 0 0 1-6-6z" fill="#B7A6DD"/><path d="M80 34H54a6 6 0 0 0-6 6v8a6 6 0 0 0 6 6v6l8-6h12a6 6 0 0 0 6-6v-8a6 6 0 0 0-6-6z" fill="#F4B996"/></symbol>
+  <symbol id="sc-nothing" viewBox="0 0 100 72"><rect width="100" height="72" rx="16" fill="#EEE9E1"/><circle cx="50" cy="36" r="18" fill="none" stroke="#C3B9AB" stroke-width="2.6" stroke-dasharray="4 5"/><path d="M41 36h18" stroke="#C3B9AB" stroke-width="3.2" stroke-linecap="round"/></symbol>
+  <symbol id="sc-goalsleep" viewBox="0 0 100 72"><rect width="100" height="72" rx="16" fill="#E7E0F5"/><path d="M66 14a13 13 0 1 0 11 21 10.5 10.5 0 0 1-11-21z" fill="#F6D58E"/><path d="M40 55S24 45 24 34a8 8 0 0 1 16-3 8 8 0 0 1 16 3c0 11-16 21-16 21z" fill="#E9A3AE"/></symbol>
+  <symbol id="sc-goalnight" viewBox="0 0 100 72"><rect width="100" height="72" rx="16" fill="#E7E0F5"/><path d="M58 14a14 14 0 1 0 12 22 11 11 0 0 1-12-22z" fill="#F6D58E"/><path d="M30 44l1.6 3.4 3.7.4-2.8 2.6.8 3.7L30 54.8 26.7 56.6l.8-3.7-2.8-2.6 3.7-.4z" fill="#F6D58E"/><circle cx="26" cy="30" r="1.8" fill="#F6D58E"/><circle cx="40" cy="24" r="1.4" fill="#F6D58E"/></symbol>
+  <symbol id="sc-goalday" viewBox="0 0 100 72"><rect width="100" height="72" rx="16" fill="#FCE7C8"/><circle cx="36" cy="36" r="13" fill="#F6D58E"/><g stroke="#F2B84B" stroke-width="2.6" stroke-linecap="round"><path d="M36 15v6M36 51v6M15 36h6M26 22l4 4M26 50l4-4"/></g><path d="M54 36h20m-7-7 7 7-7 7" fill="none" stroke="#D9826A" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="sc-routine" viewBox="0 0 100 72"><rect width="100" height="72" rx="16" fill="#DCEBDD"/><rect x="28" y="16" width="44" height="40" rx="6" fill="#fff" stroke="#9FC4A6" stroke-width="2"/><circle cx="37" cy="26" r="3.4" fill="#6FA97C"/><circle cx="37" cy="37" r="3.4" fill="#6FA97C"/><circle cx="37" cy="48" r="3.4" fill="#C6E0C9"/><path d="M45 26h20M45 37h20M45 48h14" stroke="#B6D4B9" stroke-width="2.6" stroke-linecap="round"/></symbol>
+  <symbol id="sc-prodguide" viewBox="0 0 100 72"><rect width="100" height="72" rx="16" fill="#FBE7CF"/><path d="M50 20c-6-4-14-5-21-3.5v34c7-1.5 15-.5 21 3.5z" fill="#F9D9C4" stroke="#D9826A" stroke-width="2" stroke-linejoin="round"/><path d="M50 20c6-4 14-5 21-3.5v34c-7-1.5-15-.5-21 3.5z" fill="#FCEDE2" stroke="#D9826A" stroke-width="2" stroke-linejoin="round"/><path d="M34 27h10M34 33h10M56 27h10M56 33h10" stroke="#E6B59A" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="sc-prodplan" viewBox="0 0 100 72"><rect width="100" height="72" rx="16" fill="#FBE7CF"/><rect x="18" y="16" width="64" height="40" rx="8" fill="#fff"/><path d="M50 16v40" stroke="#EEDCC9" stroke-width="2"/><circle cx="34" cy="34" r="9" fill="#F6D58E"/><g stroke="#F2B84B" stroke-width="2" stroke-linecap="round"><path d="M34 20v4M34 44v4M20 34h4M44 34h4"/></g><path d="M68 25a10 10 0 1 0 8 16 8 8 0 0 1-8-16z" fill="#C9B8E8"/></symbol>
+  <symbol id="sc-prodprint" viewBox="0 0 100 72"><rect width="100" height="72" rx="16" fill="#FBE7CF"/><rect x="30" y="20" width="30" height="36" rx="3" fill="#fff" stroke="#D9826A" stroke-width="2"/><rect x="38" y="16" width="30" height="36" rx="3" fill="#FCEDE2" stroke="#D9826A" stroke-width="2"/><path d="M44 26h18M44 32h18M44 38h12" stroke="#E6B59A" stroke-width="2" stroke-linecap="round"/><path d="M58 52l3-9 9 9-9 3z" fill="#B7A6DD"/></symbol>
  </defs>
 </svg>
 
 <style>
-body{ background:linear-gradient(180deg,#EFE8F8 0%,#FCEFE7 55%,var(--cream) 100%); min-height:100vh; padding-bottom:0; }
-.quiz{ min-height:100vh; display:flex; flex-direction:column; }
-.quiz__wrap{ width:100%; max-width:580px; margin:0 auto; padding:14px 18px 34px; flex:1; display:flex; flex-direction:column; }
-.quiz__top{ display:flex; align-items:center; gap:14px; justify-content:space-between; padding:6px 2px 14px; min-height:40px; }
-.quiz__top .brand{ font-family:'Fredoka',sans-serif; font-weight:600; color:var(--plum); font-size:1.1rem; }
-.quiz__progress{ flex:1; display:flex; align-items:center; gap:10px; max-width:280px; }
-.quiz__progress[hidden]{ display:none; }
-.quiz__bar{ flex:1; height:8px; background:#E7DAF2; border-radius:99px; overflow:hidden; }
-.quiz__bar i{ display:block; height:100%; width:0; background:var(--btn); border-radius:99px; transition:width .35s ease; }
-.quiz__progress small{ color:var(--soft); font-weight:800; font-size:.8rem; white-space:nowrap; }
-.quiz__card{ background:var(--white); border-radius:22px; box-shadow:var(--shadow); padding:26px 22px 24px; flex:1;
-  display:flex; flex-direction:column; justify-content:center; animation:fade .35s ease; }
-@keyframes fade{ from{ opacity:0; transform:translateY(10px);} to{ opacity:1; transform:none;} }
-.quiz__eyebrow{ font-family:'Fredoka',sans-serif; color:var(--terra); font-weight:500; margin:0 0 8px; font-size:.95rem; }
-.quiz h1{ font-size:clamp(1.5rem,6vw,2rem); margin:0 0 .4em; }
-.quiz h2{ font-size:clamp(1.3rem,5.2vw,1.7rem); margin:0 0 .3em; }
-.quiz__lead{ color:var(--soft); font-size:1.05rem; margin:0 0 4px; }
-.opts{ display:grid; gap:11px; margin-top:22px; }
-.opt{ display:flex; align-items:center; gap:13px; width:100%; text-align:left; background:var(--cream);
-  border:2px solid var(--line); border-radius:14px; padding:15px 16px; font-family:inherit; font-size:1.02rem; font-weight:700;
-  color:var(--ink); cursor:pointer; transition:border-color .15s, background .15s, transform .08s; line-height:1.3; }
-.opt:hover{ border-color:var(--lav2); background:#fff; }
-.opt:active{ transform:scale(.99); }
-.opt__k{ width:28px; height:28px; flex:0 0 28px; border-radius:50%; background:#fff; border:2px solid var(--lav2);
-  display:grid; place-items:center; font-family:'Fredoka',sans-serif; color:var(--plum); font-size:.9rem; }
-.quiz__back{ background:none; border:0; color:var(--soft); font-family:inherit; font-size:.95rem; cursor:pointer;
-  padding:10px 2px 0; margin-top:16px; align-self:flex-start; }
-.quiz__back:hover{ color:var(--plum); }
+:root{ --buy:#12C24F; --buy-top:#2BE06B; --buy-bot:#0FA846; --buy-h:#0C9A40; --buy-sh:rgba(16,190,74,.5);
+  --nav:#2C8C86; --nav-h:#246f6a; --qink:#2A2733; }
+body{ background:linear-gradient(180deg,#EAF1F6 0%,#F4EEF8 48%,var(--cream) 100%); min-height:100vh; padding-bottom:0; }
+.quizx{ min-height:100vh; display:flex; flex-direction:column; }
+.quizx__wrap{ width:100%; max-width:600px; margin:0 auto; padding:10px 18px 40px; flex:1; display:flex; flex-direction:column; }
+.topbar{ display:flex; align-items:center; gap:12px; padding:10px 2px 18px; }
+.topbar[hidden]{ display:none; }
+.topbar__back{ background:none; border:0; font-size:1.4rem; line-height:1; color:var(--soft); cursor:pointer; padding:4px 8px; border-radius:9px; }
+.topbar__back:hover{ color:var(--plum); background:#fff; }
+.track{ flex:1; height:8px; background:#DCE6EC; border-radius:99px; overflow:hidden; }
+.track i{ display:block; height:100%; width:0; background:var(--nav); border-radius:99px; transition:width .4s ease; }
+.topbar small{ color:var(--soft); font-weight:800; font-size:.8rem; min-width:34px; text-align:right; }
+.screen{ animation:fade .32s ease; flex:1; display:flex; flex-direction:column; }
+@keyframes fade{ from{ opacity:0; transform:translateY(8px);} to{ opacity:1; transform:none;} }
+.photo{ width:100%; aspect-ratio:3/2; object-fit:cover; border-radius:20px; box-shadow:var(--shadow); background:#E7DAF2; }
+.screen h1{ font-family:'Fredoka',sans-serif; color:var(--qink); font-size:clamp(1.55rem,6.4vw,2.15rem); line-height:1.12; margin:18px 0 .35em; letter-spacing:-.01em; }
+.screen h2{ font-family:'Fredoka',sans-serif; color:var(--qink); font-size:clamp(1.35rem,5.6vw,1.8rem); line-height:1.16; margin:4px 0 .4em; }
+.screen .lead{ color:var(--soft); font-size:1.06rem; margin:0 0 6px; }
+.namewrap{ margin-top:20px; }
+.namewrap label{ display:block; font-weight:800; color:var(--qink); margin:0 0 8px; }
+.field{ width:100%; border:2px solid var(--line); border-radius:14px; padding:15px 16px; font-family:inherit; font-size:1.05rem; background:#fff; color:var(--ink); }
+.field:focus{ outline:none; border-color:var(--nav); }
+.skip{ display:inline-block; margin-top:14px; color:var(--soft); font-weight:700; font-size:.95rem; background:none; border:0; cursor:pointer; text-decoration:underline; padding:4px 0; }
+.skip:hover{ color:var(--plum); }
+.btn--nav{ background:var(--nav); color:#fff; box-shadow:0 8px 20px rgba(44,140,134,.28); }
+.btn--nav:hover{ background:var(--nav-h); box-shadow:0 10px 24px rgba(44,140,134,.34); }
+.btn--nav:focus-visible{ outline:3px solid var(--nav-h); outline-offset:3px; }
 .btn--full{ display:flex; width:100%; margin-top:22px; }
-.loader{ text-align:center; padding:20px 0; }
-.loader__spin{ width:54px; height:54px; margin:0 auto 18px; border-radius:50%; border:5px solid #EADFF3;
-  border-top-color:var(--btn); animation:spin 1s linear infinite; }
+.btn--buy{ position:relative; overflow:hidden; color:#fff; text-shadow:0 1px 2px rgba(0,0,0,.26); letter-spacing:.2px;
+  background:linear-gradient(180deg,var(--buy-top) 0%, var(--buy-bot) 100%);
+  box-shadow:0 14px 34px var(--buy-sh), 0 0 0 4px rgba(18,194,79,.16), inset 0 -3px 0 rgba(0,0,0,.16), inset 0 2px 0 rgba(255,255,255,.28); }
+.btn--buy:hover{ filter:brightness(1.05); box-shadow:0 16px 40px var(--buy-sh), 0 0 0 5px rgba(18,194,79,.2), inset 0 -3px 0 rgba(0,0,0,.18); }
+.btn--buy:focus-visible{ outline:3px solid #0A7A33; outline-offset:3px; }
+.btn--buy::after{ content:""; position:absolute; top:0; left:-60%; width:42%; height:100%; pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent); transform:skewX(-18deg); animation:shine 3s ease-in-out infinite; }
+@keyframes shine{ 0%{ left:-60%; } 55%,100%{ left:135%; } }
+.pill small{ display:block; font-weight:600; color:var(--soft); font-size:.9rem; margin-top:3px; line-height:1.25; }
+.pill.is-sel small{ color:#2b7e78; }
+@keyframes pulse{ 0%,100%{ transform:scale(1);} 50%{ transform:scale(1.035);} }
+.pulse{ animation:pulse 1.9s ease-in-out infinite; }
+.pulse:active{ animation:none; }
+.pills{ display:grid; gap:11px; margin-top:22px; }
+.pill{ width:100%; text-align:left; background:#fff; border:2px solid var(--line); border-radius:14px; padding:16px 18px;
+  font-family:inherit; font-size:1.05rem; font-weight:700; color:var(--qink); cursor:pointer;
+  transition:border-color .15s, background .15s, box-shadow .15s, transform .08s; line-height:1.3; -webkit-tap-highlight-color:transparent; }
+.pill:hover{ border-color:var(--nav); }
+.pill:active{ transform:scale(.995); }
+.pill:focus-visible{ outline:3px solid var(--nav); outline-offset:2px; }
+.pill.is-sel{ border-color:var(--nav); background:#EAF6F5; box-shadow:0 0 0 3px rgba(44,140,134,.14); }
+.insight{ background:#F3EFFA; border:1px solid #E3D8F3; border-radius:20px; padding:20px; margin-top:6px; }
+.insight .photo{ margin-bottom:16px; box-shadow:none; }
+.insight__row{ display:flex; gap:12px; align-items:flex-start; }
+.insight__ico{ width:40px; height:40px; flex:0 0 40px; border-radius:50%; background:#fff; display:grid; place-items:center; box-shadow:var(--shadow-sm); }
+.insight__ico svg{ width:24px; height:24px; }
+.insight__tx p{ margin:0 0 .7em; color:var(--ink); font-size:1.02rem; }
+.insight__tx p:last-child{ margin-bottom:0; }
+.insight strong{ color:var(--qink); }
+.loader{ text-align:center; padding:40px 0; }
+.loader__spin{ width:54px; height:54px; margin:0 auto 18px; border-radius:50%; border:5px solid #E1D6F1; border-top-color:var(--nav); animation:spin 1s linear infinite; }
 @keyframes spin{ to{ transform:rotate(360deg);} }
-.loader p{ color:var(--soft); margin:0; }
-.result__tag{ display:inline-block; background:var(--sage); color:#3E6B48; font-family:'Fredoka',sans-serif; font-weight:500;
-  font-size:.85rem; padding:.3em 1em; border-radius:99px; margin-bottom:12px; }
-.result__p{ font-size:1.05rem; margin:0 0 .8em; }
+.loader p{ color:var(--soft); margin:0; font-size:1.05rem; }
+.result__tag{ display:inline-block; background:var(--sage); color:#3E6B48; font-family:'Fredoka',sans-serif; font-weight:500; font-size:.85rem; padding:.3em 1em; border-radius:99px; margin-bottom:12px; }
+.result__p{ font-size:1.06rem; margin:0 0 .8em; color:var(--ink); }
 .result__list{ list-style:none; padding:0; margin:16px 0 4px; }
 .result__list li{ position:relative; padding-left:32px; margin-bottom:10px; line-height:1.4; }
 .result__list li::before{ content:""; position:absolute; left:0; top:1px; width:22px; height:22px; border-radius:50%;
   background:var(--sage) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 12.5l3.2 3.2L17 9' stroke='%23467A52' stroke-width='2.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/18px no-repeat; }
-.offerbox{ margin-top:22px; border:2px solid var(--lav2); border-radius:18px; padding:20px; text-align:center; background:#FBF7FF; }
-.offerbox h3{ margin:0 0 6px; font-size:1.2rem; }
-.offerbox__price{ font-family:'Fredoka',sans-serif; font-weight:600; color:var(--plum); font-size:2.4rem; line-height:1; margin:6px 0 2px; }
+.offerbox{ margin-top:22px; border:2px solid var(--buy); border-radius:18px; padding:22px; text-align:center; background:#F3FBF5; }
+.offerbox h3{ margin:0 0 6px; font-size:1.2rem; color:var(--qink); }
+.offerbox__price{ font-family:'Fredoka',sans-serif; font-weight:600; color:var(--plum); font-size:2.5rem; line-height:1; margin:6px 0 2px; }
 .offerbox__price span{ font-size:1rem; color:var(--soft); font-weight:500; }
 .offerbox__terms{ color:var(--soft); font-weight:700; font-size:.9rem; margin:0 0 14px; }
+.stack{ list-style:none; padding:0; margin:4px 0 16px; text-align:left; }
+.stack li{ position:relative; padding:8px 0 8px 30px; border-bottom:1px dashed #D5E8D7; font-size:.98rem; color:var(--ink); line-height:1.35; }
+.stack li:last-child{ border-bottom:0; }
+.stack li::before{ content:""; position:absolute; left:0; top:9px; width:20px; height:20px; border-radius:50%;
+  background:var(--sage) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 12.5l3.2 3.2L17 9' stroke='%23467A52' stroke-width='2.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat; }
+.offer__badges{ display:flex; flex-wrap:wrap; gap:8px 14px; justify-content:center; margin-top:14px; }
+.offer__badges span{ display:inline-flex; align-items:center; gap:5px; font-size:.8rem; color:var(--soft); font-weight:700; }
+.offer__badges svg{ width:15px; height:15px; flex:0 0 15px; }
 .microtrust{ display:flex; align-items:center; justify-content:center; gap:7px; font-size:.84rem; color:var(--soft); margin:10px 0 0; }
 .microtrust svg{ width:16px; height:16px; flex:0 0 16px; }
 .result__more{ display:block; text-align:center; margin-top:16px; font-weight:700; font-size:.95rem; }
-.quiz__foot{ text-align:center; color:var(--soft); font-size:.8rem; margin-top:14px; }
-@media (min-width:600px){ .quiz__card{ padding:34px 32px 30px; } }
+.quizx__foot{ text-align:center; color:var(--soft); font-size:.8rem; margin-top:20px; }
+@media (prefers-reduced-motion:reduce){ .pulse,.screen,.track i,.btn--buy::after{ animation:none!important; transition:none!important; } .btn--buy::after{ display:none; } }
+@media (min-width:600px){ .quizx__wrap{ padding:14px 22px 44px; } }
+@media (max-width:360px){ .pill{ padding:14px; font-size:1rem; } .quizx__wrap{ padding:10px 14px 34px; } .screen h1{ font-size:1.5rem; } }
 </style>
 
-<main class="quiz">
- <div class="quiz__wrap">
-  <div class="quiz__top">
-   <span class="brand">Adiós Chupón</span>
-   <span class="quiz__progress" id="prog" hidden><span class="quiz__bar"><i id="bar"></i></span><small id="progtxt"></small></span>
+<main class="quizx">
+ <div class="quizx__wrap">
+  <div class="topbar" id="topbar" hidden>
+   <button class="topbar__back" id="back" type="button" aria-label="Volver">&larr;</button>
+   <span class="track"><i id="bar"></i></span>
+   <small id="progtxt"></small>
   </div>
-  <div id="app" class="quiz__card" role="group" aria-live="polite"></div>
-  <p class="quiz__foot">Test orientativo · no sustituye la valoración de un profesional de la salud.</p>
+  <div id="app" role="group" aria-live="polite"></div>
+  <p class="quizx__foot">Test orientativo · no sustituye la valoración de un profesional de la salud.</p>
  </div>
 </main>
 
