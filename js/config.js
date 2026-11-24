@@ -15,5 +15,11 @@ window.ADIOS_CHUPON_CONFIG = {
   // Enlaces legales (obligatorios antes de publicar). Mientras estén vacíos, se muestra un aviso.
   privacyUrl: "",
   termsUrl: "",
-  contactUrl: ""
+  contactUrl: "",
+
+  // Panel de administrador (medición del quiz). Pega aquí la URL de tu Web App de Google Apps Script.
+  // Mientras esté vacío, el quiz NO envía datos a ningún lado (solo guarda un registro local para la demo).
+  analyticsUrl: "",
+  // Clave simple para que solo tú veas el panel (la misma que pones en el script). Opcional.
+  analyticsKey: ""
 };
